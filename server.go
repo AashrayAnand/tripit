@@ -19,4 +19,4 @@ func main() {
 		c.String(http.StatusOK, "Hello %s", name)
 	})
 	router.Run() // listen and serve on 0.0.0.0:8080
-
+}
