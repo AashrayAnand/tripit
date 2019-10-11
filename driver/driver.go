@@ -7,6 +7,7 @@ import (
 
 	"github.com/AashrayAnand/Bill-List/models"
 	"github.com/AashrayAnand/Bill-List/secret"
+	"github.com/google/uuid"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -32,11 +33,8 @@ func FindUser(user string, res *models.User) error {
 }
 
 func AddUser(user string, pass string) error {
-	/*_, err := Users.InsertOne(context.TODO(), bson.D{
-	{"user", user},
-	{"pass", pass},
-	{"created", time.Now()}})*/
 	var data models.User
+	data.Id = string(uuid.New())
 	data.Username = user
 	data.Password = pass
 	data.Created = time.Now()
