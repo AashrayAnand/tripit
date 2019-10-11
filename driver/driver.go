@@ -28,7 +28,7 @@ func InitDB() *mongo.Client {
 }
 
 func FindUser(user string, res *models.User) error {
-	return Users.FindOne(context.TODO(), bson.D{{"user", user}}).Decode(res)
+	return Users.FindOne(context.TODO(), bson.D{{"username", user}}).Decode(res)
 }
 
 func AddUser(user string, pass string) error {
