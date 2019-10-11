@@ -32,9 +32,14 @@ func FindUser(user string, res *models.User) error {
 }
 
 func AddUser(user string, pass string) error {
-	_, err := Users.InsertOne(context.TODO(), bson.D{
-		{"user", user},
-		{"pass", pass},
-		{"created", time.Now()}})
+	/*_, err := Users.InsertOne(context.TODO(), bson.D{
+	{"user", user},
+	{"pass", pass},
+	{"created", time.Now()}})*/
+	var data models.User
+	data.Username = user
+	data.Password = pass
+	data.Created = time.Now()
+	_, err := Users.InsertOne(context.TODO(), data)
 	return err
 }

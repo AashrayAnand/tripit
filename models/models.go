@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 // structure to represent user, will be populated
 // upon new user creation
 type User struct {
@@ -7,4 +9,5 @@ type User struct {
 	Name     string `json:name`
 	Password string `json:pass`
 	Token    string `json:token`
+	Created  time.Time
 }

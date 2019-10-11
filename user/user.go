@@ -29,6 +29,7 @@ func Create(c *gin.Context) {
 	var searchResponse models.User
 	// search for existing user with specified username
 	err := driver.FindUser(user, &searchResponse)
+	fmt.Printf("res %+v", searchResponse)
 	if err != nil {
 		// user does not exist, create user
 		if err.Error() == "mongo: no documents in result" {
@@ -85,7 +86,7 @@ func Login(c *gin.Context) {
 	} else {
 		fmt.Println(searchResponse.Password)
 		if err := bcrypt.CompareHashAndPassword([]byte(searchResponse.Password), []byte(pass)); err != nil {
-			res := fmt.Sprintf("incorrect user/pass combination")
+			res := fmt.Sprintf("incorrect user/pass combination %+v", searchResponse.Password)
 			c.JSON(301, gin.H{"message": res, "status": http.StatusInternalServerError})
 		} else {
 			res := fmt.Sprintf("welcome %s!", user)
