@@ -29,7 +29,6 @@ func Create(c *gin.Context) {
 	var searchResponse models.User
 	// search for existing user with specified username
 	err := driver.FindUser(user, &searchResponse)
-	fmt.Printf("res %+v", searchResponse)
 	if err != nil {
 		// user does not exist, create user
 		if err.Error() == "mongo: no documents in result" {

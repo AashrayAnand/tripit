@@ -7,17 +7,19 @@ import (
 
 	"github.com/AashrayAnand/Bill-List/models"
 	"github.com/AashrayAnand/Bill-List/secret"
-	"github.com/google/uuid"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/x/mongo/driver/uuid"
 )
 
 // MongoDB client object
 var Client = InitDB()
 
-// users collection
+// initialize pointer to mongodb users collection
 var Users = Client.Database("BillList").Collection("users")
+
+// TODO: POINTERS TO OTHER COLLECTIONS
 
 // initialize and return mongoDB client
 func InitDB() *mongo.Client {
@@ -28,13 +30,15 @@ func InitDB() *mongo.Client {
 	return client
 }
 
+// find a user given a specified user name
 func FindUser(user string, res *models.User) error {
 	return Users.FindOne(context.TODO(), bson.D{{"username", user}}).Decode(res)
 }
 
+// add a new user to the users collection
 func AddUser(user string, pass string) error {
 	var data models.User
-	data.Id = string(uuid.New())
+	data.Id, _ = uuid.New()
 	data.Username = user
 	data.Password = pass
 	data.Created = time.Now()
