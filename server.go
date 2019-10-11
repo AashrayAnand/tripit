@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	router := gin.Default() // initializ gin routing engine
+	router := gin.Default() // initialize gin routing engine
 
 	user.AddUserRoutes(router) // add all routes in the /user group
 	router.Use(static.Serve("/", static.LocalFile("./views", true)))

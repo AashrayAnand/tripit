@@ -72,22 +72,23 @@ func Login(c *gin.Context) {
 	var searchResponse models.User
 	// search for existing user with specified username
 	err := driver.FindUser(user, &searchResponse)
-	if err != nil {
+	if err != nil { // user does not exist
 		if err.Error() == "mongo: no documents in result" {
 			res := fmt.Sprintf("user does not exist")
 			c.JSON(301, gin.H{"message": res, "status": http.StatusInternalServerError})
 			return
-		} else {
+		} else { // error querying db
 			res := fmt.Sprintf("error finding user")
 			c.JSON(301, gin.H{"message": res, "status": http.StatusInternalServerError})
 			return
 		}
-	} else {
-		fmt.Println(searchResponse.Password)
+	} else { // user exists, but specified passsword is incorrect
 		if err := bcrypt.CompareHashAndPassword([]byte(searchResponse.Password), []byte(pass)); err != nil {
 			res := fmt.Sprintf("incorrect user/pass combination %+v", searchResponse.Password)
 			c.JSON(301, gin.H{"message": res, "status": http.StatusInternalServerError})
-		} else {
+
+		} else { // user authenticated successfully
+			// TODO: return a cookie or authorization header for the user
 			res := fmt.Sprintf("welcome %s!", user)
 			c.JSON(301, gin.H{"message": res, "status": http.StatusInternalServerError})
 		}
