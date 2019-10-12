@@ -18,8 +18,8 @@ type User struct {
 
 type Location struct {
 	Name	 string
-	X-coor	 float32
-	Y-coor	 float32
+	Xcoor	 float32
+	Ycoor	 float32
 }
 
 type Trip struct {
