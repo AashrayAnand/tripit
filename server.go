@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/AashrayAnand/TripIt/session"
-	"github.com/AashrayAnand/TripIt/user"
+	"github.com/AashrayAnand/tripit/session"
+	"github.com/AashrayAnand/tripit/user"
 	"github.com/gin-gonic/gin"
 )
 
