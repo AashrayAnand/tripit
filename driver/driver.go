@@ -49,8 +49,8 @@ func AddUser(user string, pass string) error {
 	return err
 }
 
-func AddTrip(trip Trip) error {
-	var data models.Trip
-	data.Id, _ = uuid.New()
-	data.Trip = Marshal(trip)
-}
+// func AddTrip(trip Trip) error {
+// 	var data models.Trip
+// 	data.Id, _ = uuid.New()
+// 	data.Trip = Marshal(trip)
+// }
