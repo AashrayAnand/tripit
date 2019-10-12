@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/AashrayAnand/tripit/session"
+	"github.com/AashrayAnand/tripit/trip"
 	"github.com/AashrayAnand/tripit/user"
 	"github.com/gin-gonic/gin"
 )
@@ -17,6 +18,7 @@ func main() {
 	router := gin.Default() // initialize gin routing engine
 
 	user.AddUserRoutes(router) // add all routes in the /user groups
+	router.POST("/trip", trip.Create)
 
 	//router.Use(static.Serve("/", static.LocalFile("./views", true)))
 

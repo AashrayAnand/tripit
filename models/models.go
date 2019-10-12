@@ -15,3 +15,14 @@ type User struct {
 	Name     string
 	Password string
 }
+
+type Location struct {
+	Name	 string
+	X-coor	 float32
+	Y-coor	 float32
+}
+
+type Trip struct {
+	Id		  uuid.UUID
+	Locations []Location{}	'json:"locations,omitempty"'
+}
