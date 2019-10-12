@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/AashrayAnand/Bill-List/session"
-	"github.com/AashrayAnand/Bill-List/user"
-	"github.com/gin-gonic/contrib/static"
+	"github.com/AashrayAnand/TripIt/session"
+	"github.com/AashrayAnand/TripIt/user"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,7 +18,7 @@ func main() {
 
 	user.AddUserRoutes(router) // add all routes in the /user groups
 
-	router.Use(static.Serve("/", static.LocalFile("./views", true)))
+	//router.Use(static.Serve("/", static.LocalFile("./views", true)))
 
 	router.Run() // listen and server 0.0.0.0:8080
 }

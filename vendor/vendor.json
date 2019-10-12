@@ -9,12 +9,6 @@
 			"revisionTime": "2019-09-05T05:13:34Z"
 		},
 		{
-			"checksumSHA1": "xJnBpChUm4Oeyt2QSCqYpStnkTk=",
-			"path": "github.com/gin-gonic/contrib/static",
-			"revision": "35076c1b2beaf5f26634fe6468bce6707c3d880a",
-			"revisionTime": "2019-09-23T05:42:18Z"
-		},
-		{
 			"checksumSHA1": "90S9sFqcIo/uuwQzz1t/wYs7GEs=",
 			"path": "github.com/gin-gonic/gin",
 			"revision": "b869fe1415e4b9eb52f247441830d502aece2d4d",
@@ -53,16 +47,16 @@
 			"revisionTime": "2019-09-20T23:43:18Z"
 		},
 		{
-			"checksumSHA1": "hNqq14LFOpVJ6hCs+OTAEKrWUkk=",
+			"checksumSHA1": "IJyeuhvvpCoUChIdi35TPQ2R82A=",
 			"path": "github.com/json-iterator/go",
-			"revision": "819acad769e54806c920726ac93537ba4e2c22ad",
-			"revisionTime": "2019-09-23T06:02:24Z"
+			"revision": "03217c3e97663914aec3faafde50d081f197a0a2",
+			"revisionTime": "2019-10-12T13:07:04Z"
 		},
 		{
-			"checksumSHA1": "C3Xbt5Nq5Wez3B5cyi8vQlVkP1g=",
+			"checksumSHA1": "IQ7SsIWs24sdmY9WnHNf3YV99Yc=",
 			"path": "github.com/mattn/go-isatty",
-			"revision": "bf9a1dea1961e1d831824fb135332bfb8c10e8b8",
-			"revisionTime": "2019-08-18T12:36:53Z"
+			"revision": "0e9ddb7c0c0aef74fa25eaba4141e6b5ab7aca2a",
+			"revisionTime": "2019-10-09T15:56:15Z"
 		},
 		{
 			"checksumSHA1": "ZTcgWKWHsrX0RXYVXn5Xeb8Q0go=",
@@ -83,10 +77,10 @@
 			"revisionTime": "2019-08-12T10:43:08Z"
 		},
 		{
-			"checksumSHA1": "RNVKKPbxQAFzQ7bawOBsoMrjh2A=",
+			"checksumSHA1": "l5odpUnGxutBJZ48Qm+AlFtI4Qs=",
 			"path": "golang.org/x/sys/unix",
-			"revision": "bb3f8db39f24d596342144141f45701e604f5aed",
-			"revisionTime": "2019-09-30T19:06:52Z"
+			"revision": "b09406accb4736d857a32bf9444cd7edae2ffa79",
+			"revisionTime": "2019-10-10T09:17:53Z"
 		},
 		{
 			"checksumSHA1": "P/k5ZGf0lEBgpKgkwy++F7K1PSg=",
@@ -95,11 +89,11 @@
 			"revisionTime": "2017-07-30T05:02:35Z"
 		},
 		{
-			"checksumSHA1": "hm7Z3BxyGDmfC340664VTdr72IU=",
+			"checksumSHA1": "q7pfZZieFzr0mBeX1cBubsnISPw=",
 			"path": "gopkg.in/yaml.v2",
-			"revision": "bb4e33bf68bf89cad44d386192cbed201f35b241",
-			"revisionTime": "2019-07-08T17:37:06Z"
+			"revision": "f221b8435cfb71e54062f6c6e99e9ade30b124d5",
+			"revisionTime": "2019-10-02T18:33:36Z"
 		}
 	],
-	"rootPath": "github.com/AashrayAnand/Bill-List"
+	"rootPath": "github.com/AashrayAnand/TripIt"
 }

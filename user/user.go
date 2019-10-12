@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/AashrayAnand/Bill-List/driver"
-	"github.com/AashrayAnand/Bill-List/models"
+	"github.com/AashrayAnand/TripIt/driver"
+	"github.com/AashrayAnand/TripIt/models"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 )

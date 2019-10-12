@@ -5,8 +5,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/AashrayAnand/Bill-List/models"
-	"github.com/AashrayAnand/Bill-List/secret"
+	"github.com/AashrayAnand/TripIt/models"
+	"github.com/AashrayAnand/TripIt/secret"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
