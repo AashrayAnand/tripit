@@ -17,12 +17,12 @@ type User struct {
 }
 
 type Location struct {
-	Name	 string
-	Xcoor	 float32
-	Ycoor	 float32
+	Name  string
+	Xcoor float32
+	Ycoor float32
 }
 
 type Trip struct {
-	Id		  uuid.UUID
-	Locations []Location{}
+	Id        uuid.UUID
+	Locations []Location
 }
