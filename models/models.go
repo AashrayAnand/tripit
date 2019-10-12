@@ -24,5 +24,5 @@ type Location struct {
 
 type Trip struct {
 	Id		  uuid.UUID
-	Locations []Location{}	'json:"locations,omitempty"'
+	Locations []Location{}
 }
