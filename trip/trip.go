@@ -21,7 +21,7 @@ import (
 func Create(c *gin.Context) {
 	// get trip data from POST form
 	trip := c.PostForm("trip") // [{}, {}, ...]
-	res := fmt.Sprint(trip)
+	res := fmt.Sprintf("%v", trip)
 	c.JSON(301, gin.H{"message": res, "status": http.StatusOK})
 	return
 }
