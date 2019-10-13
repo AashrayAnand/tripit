@@ -1,7 +1,6 @@
 package trip
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -21,7 +20,7 @@ import (
 func Create(c *gin.Context) {
 	// get trip data from POST form
 	trip := c.PostForm("trip") // [{}, {}, ...]
-	res := fmt.Sprintf("%v", trip)
-	c.JSON(301, gin.H{"message": res, "status": http.StatusOK})
+	//res := fmt.Sprintf("%v", trip)
+	c.JSON(301, gin.H{"message": trip, "status": http.StatusOK})
 	return
 }
