@@ -19,12 +19,12 @@ import (
 // check if querying trip collection for a given user
 // name returns an existing trip, if not, return "no trips"
 func Create(c *gin.Context) {
-	var json models.Location
+	var list models.LocationList
 	if err := c.ShouldBindJSON(&json); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(301, gin.H{"message": json, "status": http.StatusOK})
+	c.JSON(301, gin.H{"message": list, "status": http.StatusOK})
 	return
 }

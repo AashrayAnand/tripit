@@ -17,12 +17,16 @@ type User struct {
 }
 
 type Location struct {
-	Name  string  `form:"name" json:"name" binding:"required"`
-	Xcoor float32 `form:"x" json:"x" binding:"required"`
-	Ycoor float32 `form:"y" json:"y" binding:"required"`
+	Name string  `form:"name" json:"name" binding:"required"`
+	x    float32 `form:"x" json:"x" binding:"required"`
+	y    float32 `form:"y" json:"y" binding:"required"`
 }
 
 type Trip struct {
 	Id        uuid.UUID
 	Locations []Location
+}
+
+type LocationList struct {
+	loc1 Location `form:"loc1" json:"loc1" binding:"required"`
 }
