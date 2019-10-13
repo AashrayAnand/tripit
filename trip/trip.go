@@ -1,9 +1,9 @@
 package trip
 
 import (
-	"fmt"
 	"net/http"
 
+	"github.com/AashrayAnand/tripit/models"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,10 +19,12 @@ import (
 // check if querying trip collection for a given user
 // name returns an existing trip, if not, return "no trips"
 func Create(c *gin.Context) {
-	// get trip data from POST form
-	trip := c.PostForm("trip") // [{}, {}, ...]
-	//res := fmt.Sprintf("%v", trip)
-	fmt.Println(trip)
-	c.JSON(301, gin.H{"message": trip, "status": http.StatusOK})
+	var json models.Location
+	if err := ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(301, gin.H{"message": json, "status": http.StatusOK})
 	return
 }
