@@ -18,6 +18,9 @@ var Client = InitDB()
 
 // initialize pointer to mongodb users collection
 var Users = Client.Database("BillList").Collection("users")
+var Trips = Client.Database("BillList").Collection("trips")
+
+// make a trips collection as a json object
 
 // TODO: POINTERS TO OTHER COLLECTIONS
 
@@ -51,3 +54,9 @@ func AddUser(user string, pass string) error {
 	_, err := Users.InsertOne(context.TODO(), data)
 	return err
 }
+
+// func AddTrip(trip Trip) error {
+// 	var data models.Trip
+// 	data.Id, _ = uuid.New()
+// 	data.Trip = Marshal(trip)
+// }
