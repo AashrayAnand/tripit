@@ -55,9 +55,9 @@ func AddUser(user string, pass string) error {
 	return err
 }
 
-func AddTrip(list LocationList) error {
+func AddTrip(list models.LocationList) error {
 	var data models.Trip
-	data.Id, _ = uuid.New()
+	data.Id = uuid.New()
 	data.Locations = list
 	_, err := Trips.InsertOne(context.TODO(), data)
 	return err
