@@ -1,6 +1,7 @@
 package trip
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/AashrayAnand/tripit/models"
@@ -25,10 +26,7 @@ func Create(c *gin.Context) {
 		return
 	}
 
-	c.JSON(301, gin.H{"message": list.Loc1 + "\n" + list.Loc2 
-								+ "\n" + list.Loc3
-								+ "\n" + list.Loc4
-								+ "\n" + list.Loc5
-								"status": http.StatusOK})
+	res := fmt.Sprintf("%v %v %v %v %v", list.Loc1, list.Loc2, list.Loc3, list.Loc4, list.Loc5)
+	c.JSON(301, gin.H{"message": res, "status": http.StatusOK})
 	return
 }
