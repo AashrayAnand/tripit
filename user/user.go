@@ -2,10 +2,13 @@ package user
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"time"
 
 	"github.com/AashrayAnand/tripit/driver"
 	"github.com/AashrayAnand/tripit/models"
+	"github.com/AashrayAnand/tripit/session"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -88,12 +91,19 @@ func Login(c *gin.Context) {
 			c.JSON(301, gin.H{"message": res, "status": http.StatusInternalServerError})
 
 		} else { // user authenticated successfully
-			// TODO: return a cookie or authorization header for the user
-			res := fmt.Sprintf("welcome %s!", user)
-			c.JSON(301, gin.H{"message": res, "status": http.StatusInternalServerError})
+			// add session ID to session store for 30 minutes
+			sessionId := session.GenSessionToken()
+			uuid := driver.GetId(user).String()
+			fmt.Println("uuid", uuid)
+			_, err = session.Client.SetNX(sessionId, uuid, 60*time.Second).Result()
+			if err != nil {
+				log.Fatal("error on redis add", err.Error())
+			}
+			val, _ := session.Client.Get(sessionId).Result()
+			res := fmt.Sprintf("welcome %s! %s %s", user, sessionId, string(val))
+			c.JSON(200, gin.H{"message": res, "status": http.StatusOK})
 		}
 	}
-	return
 }
 
 // add all routes that are part of the /user group to the specified routing engine
@@ -102,6 +112,10 @@ func AddUserRoutes(router *gin.Engine) {
 	{
 		users.POST("/create", Create) // add create user route
 		users.POST("/login", Login)   // add login route
+		users.POST("/asd", func(c *gin.Context) {
+			res := fmt.Sprintf("%#v", c.PostForm("trip"))
+			c.JSON(200, gin.H{"message": res})
+		})
 	}
 }
 

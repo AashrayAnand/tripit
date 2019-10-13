@@ -11,10 +11,11 @@ import (
 )
 
 func main() {
-	_, err := session.Client.SetNX("key", "value", 10*time.Second).Result()
-	val, err := session.Client.Get("key").Result()
 
-	fmt.Println(val, err)
+	_, _ = session.Client.SetNX("x", "y", 60*time.Second).Result()
+	val, _ := session.Client.Get("x").Result()
+	fmt.Println(val)
+
 	router := gin.Default() // initialize gin routing engine
 
 	user.AddUserRoutes(router) // add all routes in the /user groups

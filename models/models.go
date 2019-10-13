@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"go.mongodb.org/mongo-driver/x/mongo/driver/uuid"
+	"github.com/google/uuid"
 )
 
 // structure to represent user, will be populated

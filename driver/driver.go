@@ -7,10 +7,10 @@ import (
 
 	"github.com/AashrayAnand/tripit/models"
 	"github.com/AashrayAnand/tripit/secret"
+	"github.com/google/uuid"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/x/mongo/driver/uuid"
 )
 
 // MongoDB client object
@@ -38,10 +38,16 @@ func FindUser(user string, res *models.User) error {
 	return Users.FindOne(context.TODO(), bson.D{{"username", user}}).Decode(res)
 }
 
+func GetId(user string) uuid.UUID {
+	data := new(models.User)
+	_ = Users.FindOne(context.TODO(), bson.D{{"username", user}}).Decode(&data)
+	return data.Id
+}
+
 // add a new user to the users collection
 func AddUser(user string, pass string) error {
 	var data models.User
-	data.Id, _ = uuid.New()
+	data.Id = uuid.New()
 	data.Username = user
 	data.Password = pass
 	data.Created = time.Now()
