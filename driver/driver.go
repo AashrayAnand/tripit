@@ -59,6 +59,8 @@ func AddTrip(list LocationList) error {
 	var data models.Trip
 	data.Id, _ = uuid.New()
 	data.Locations = list
+	_, err := Trips.InsertOne(context.TODO(), data)
+	return err
 }
 
 // func AddTrip(trip Trip) error {
