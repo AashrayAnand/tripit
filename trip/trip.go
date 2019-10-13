@@ -20,7 +20,7 @@ import (
 // name returns an existing trip, if not, return "no trips"
 func Create(c *gin.Context) {
 	var json models.Location
-	if err := ShouldBindJSON(&json); err != nil {
+	if err := c.ShouldBindJSON(&json); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
