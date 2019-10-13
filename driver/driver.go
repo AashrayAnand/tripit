@@ -49,7 +49,25 @@ func AddUser(user string, pass string) error {
 	return err
 }
 
+func AddTrip(list LocationList) error {
+	var data models.Trip
+	data.Id, _ = uuid.New()
+	data.Locations = list
+}
+
 // func AddTrip(trip Trip) error {
+// 	/*
+// 	{
+// 		loc1: {
+// 			x: 1,
+// 			y: 2,
+// 			name: asd
+// 		},
+// 		loc2
+// 		...
+// 		loc 5
+// 	}
+// 	*/
 // 	var data models.Trip
 // 	data.Id, _ = uuid.New()
 // 	data.Trip = Marshal(trip)

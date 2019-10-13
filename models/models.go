@@ -24,9 +24,13 @@ type Location struct {
 
 type Trip struct {
 	Id        uuid.UUID
-	Locations []Location
+	Locations LocationList
 }
 
 type LocationList struct {
 	Loc1 Location `form:"loc1" json:"loc1" binding:"required"`
+	Loc2 Location `form:"loc2" json:"loc2" binding:"required"`
+	Loc3 Location `form:"loc3" json:"loc3" binding:"required"`
+	Loc4 Location `form:"loc4" json:"loc4" binding:"required"`
+	Loc5 Location `form:"loc5" json:"loc5" binding:"required"`
 }
