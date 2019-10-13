@@ -17,9 +17,9 @@ type User struct {
 }
 
 type Location struct {
-	Name  string
-	Xcoor float32
-	Ycoor float32
+	Name  string 'form:"name" json:"name" binding:"required"'
+	Xcoor float32 'form "Xcoor" json:"Xcoor" binding:"required"'
+	Ycoor float32 'form:"Ycoor" json:"Ycoor" binding:"required"'
 }
 
 type Trip struct {
