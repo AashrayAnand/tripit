@@ -18,8 +18,8 @@ type User struct {
 
 type Location struct {
 	Name  string 'form:"name" json:"name" binding:"required"'
-	Xcoor float32 'form:"Xcoor" json:"Xcoor" binding:"required"'
-	Ycoor float32 'form:"Ycoor" json:"Ycoor" binding:"required"'
+	Xcoor string 'form:"Xcoor" json:"Xcoor" binding:"required"'
+	Ycoor string 'form:"Ycoor" json:"Ycoor" binding:"required"'
 }
 
 type Trip struct {
