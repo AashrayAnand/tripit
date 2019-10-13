@@ -25,6 +25,6 @@ func Create(c *gin.Context) {
 		return
 	}
 
-	c.JSON(301, gin.H{"message": list, "status": http.StatusOK})
+	c.JSON(301, gin.H{"message": list.Loc1, "status": http.StatusOK})
 	return
 }

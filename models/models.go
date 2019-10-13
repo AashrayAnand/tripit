@@ -18,8 +18,8 @@ type User struct {
 
 type Location struct {
 	Name string  `form:"name" json:"name" binding:"required"`
-	x    float32 `form:"x" json:"x" binding:"required"`
-	y    float32 `form:"y" json:"y" binding:"required"`
+	X    float32 `form:"x" json:"x" binding:"required"`
+	Y    float32 `form:"y" json:"y" binding:"required"`
 }
 
 type Trip struct {
@@ -28,5 +28,5 @@ type Trip struct {
 }
 
 type LocationList struct {
-	loc1 Location `form:"loc1" json:"loc1" binding:"required"`
+	Loc1 Location `form:"loc1" json:"loc1" binding:"required"`
 }
