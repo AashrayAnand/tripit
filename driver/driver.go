@@ -38,7 +38,7 @@ func FindUser(user string, res *models.User) error {
 	return Users.FindOne(context.TODO(), bson.D{{"username", user}}).Decode(res)
 }
 
-func GetId(user string) uuid.UUID {
+func GetId(user string) string {
 	data := new(models.User)
 	_ = Users.FindOne(context.TODO(), bson.D{{"username", user}}).Decode(&data)
 	return data.Id
@@ -47,7 +47,7 @@ func GetId(user string) uuid.UUID {
 // add a new user to the users collection
 func AddUser(user string, pass string) error {
 	var data models.User
-	data.Id = uuid.New()
+	data.Id = uuid.New().String()
 	data.Username = user
 	data.Password = pass
 	data.Created = time.Now()
@@ -55,28 +55,10 @@ func AddUser(user string, pass string) error {
 	return err
 }
 
-func AddTrip(list models.LocationList) error {
+func AddTrip(list models.LocationList, id string) error {
 	var data models.Trip
-	data.Id = uuid.New()
+	data.Id = id
 	data.Locations = list
 	_, err := Trips.InsertOne(context.TODO(), data)
 	return err
 }
-
-// func AddTrip(trip Trip) error {
-// 	/*
-// 	{
-// 		loc1: {
-// 			x: 1,
-// 			y: 2,
-// 			name: asd
-// 		},
-// 		loc2
-// 		...
-// 		loc 5
-// 	}
-// 	*/
-// 	var data models.Trip
-// 	data.Id, _ = uuid.New()
-// 	data.Trip = Marshal(trip)
-// }

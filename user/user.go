@@ -93,9 +93,10 @@ func Login(c *gin.Context) {
 		} else { // user authenticated successfully
 			// add session ID to session store for 30 minutes
 			sessionId := session.GenSessionToken()
-			uuid := driver.GetId(user).String()
+			uuid := driver.GetId(user)
 			fmt.Println("uuid", uuid)
-			_, err = session.Client.SetNX(sessionId, uuid, 60*time.Second).Result()
+			// create session token, lasts 20 minutes
+			_, err = session.Client.SetNX(sessionId, uuid, 60*20*time.Second).Result()
 			if err != nil {
 				log.Fatal("error on redis add", err.Error())
 			}

@@ -2,14 +2,12 @@ package models
 
 import (
 	"time"
-
-	"github.com/google/uuid"
 )
 
 // structure to represent user, will be populated
 // upon new user creation
 type User struct {
-	Id       uuid.UUID // universally unique identifier
+	Id       string // universally unique identifier
 	Created  time.Time
 	Username string
 	Name     string
@@ -23,11 +21,12 @@ type Location struct {
 }
 
 type Trip struct {
-	Id        uuid.UUID
+	Id        string
 	Locations LocationList
 }
 
 type LocationList struct {
+	Auth string   `form:"auth" json:"auth" binding:"required"`
 	Loc1 Location `form:"loc1" json:"loc1" binding:"required"`
 	Loc2 Location `form:"loc2" json:"loc2" binding:"required"`
 	Loc3 Location `form:"loc3" json:"loc3" binding:"required"`
