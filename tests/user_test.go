@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
@@ -51,6 +52,7 @@ func login(params string, t *testing.T, expectedCode int) {
 	// serve request again and check that it fails with 400
 	testHTTPResponse(t, router, req, func(w *httptest.ResponseRecorder) bool {
 		status := w.Code
+		fmt.Println(w.Body)
 		return status == expectedCode
 	})
 }
