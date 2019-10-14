@@ -2,7 +2,6 @@ package trip
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/AashrayAnand/tripit/driver"
@@ -25,14 +24,14 @@ import (
 func Create(c *gin.Context) {
 
 	// bind request data
-	var list models.LocationList
+	list := new(models.LocationList)
 	if err := c.ShouldBindJSON(&list); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	if list.Auth == "" {
-		c.JSON(400, gin.H{"message": "unauthorized", "status": http.StatusBadRequest})
+		c.JSON(400, gin.H{"message": "no session token, please login", "status": http.StatusBadRequest})
 		return
 	}
 
@@ -40,12 +39,25 @@ func Create(c *gin.Context) {
 	// add trip to mongodb, check for error
 	uuid, err := session.Client.Get(list.Auth).Result()
 	if err != nil {
-		log.Fatal(err.Error())
+		if err.Error() == "redis: nil" {
+			c.JSON(400, gin.H{"message": "session token is expired, please login", "status": http.StatusBadRequest})
+			return
+		} else {
+			c.JSON(301, gin.H{"message": "error checking session token", "status": http.StatusInternalServerError})
+			return
+		}
 	}
 
 	driver.AddTrip(list, uuid)
 
 	res := fmt.Sprintf("uuid is %s", uuid)
-	c.JSON(301, gin.H{"message": res, "status": http.StatusOK})
+	c.JSON(200, gin.H{"message": res, "status": http.StatusOK})
 	return
+}
+
+func AddTripRoutes(router *gin.Engine) {
+	trips := router.Group("/trip")
+	{
+		trips.POST("/create", Create)
+	}
 }

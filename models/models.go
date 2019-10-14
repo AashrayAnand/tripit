@@ -26,10 +26,6 @@ type Trip struct {
 }
 
 type LocationList struct {
-	Auth string   `form:"auth" json:"auth" binding:"required"`
-	Loc1 Location `form:"loc1" json:"loc1" binding:"required"`
-	Loc2 Location `form:"loc2" json:"loc2" binding:"required"`
-	Loc3 Location `form:"loc3" json:"loc3" binding:"required"`
-	Loc4 Location `form:"loc4" json:"loc4" binding:"required"`
-	Loc5 Location `form:"loc5" json:"loc5" binding:"required"`
+	Auth      string     `form:"auth" json:"auth" binding:"required"`
+	Locations []Location `form:"locations" json:"locations" binding:"required"`
 }

@@ -55,10 +55,10 @@ func AddUser(user string, pass string) error {
 	return err
 }
 
-func AddTrip(list models.LocationList, id string) error {
+func AddTrip(list *models.LocationList, id string) error {
 	var data models.Trip
 	data.Id = id
-	data.Locations = list
+	data.Locations = *list
 	_, err := Trips.InsertOne(context.TODO(), data)
 	return err
 }
