@@ -20,3 +20,21 @@
 .App-link {
   color: #09d3ac;
 }
+
+#login-container, #trip-menu {
+  background-color: #282c34;
+  height: 100vh;
+}
+
+#trip-list {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+#trip-list p, #trip-list h2 {
+  color: white;
+}
+
+li > span {
+  float: right;
+}
