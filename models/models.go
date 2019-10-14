@@ -29,3 +29,9 @@ type LocationList struct {
 	Auth      string     `form:"auth" json:"auth" binding:"required"`
 	Locations []Location `form:"locations" json:"locations" binding:"required"`
 }
+
+type AuthResp struct {
+	Auth    string `json:"auth"`
+	Message string `json:"message"`
+	Status  int    `json:"status"`
+}
