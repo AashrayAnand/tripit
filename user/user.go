@@ -61,7 +61,8 @@ func Create(c *gin.Context) {
 	}
 
 	res := fmt.Sprintf("user %s created", user)
-	c.JSON(200, gin.H{"message": res, "status": http.StatusOK})
+	sessionId := AddSessionToken(user)
+	c.JSON(200, gin.H{"message": res, "status": http.StatusOK, "token": sessionId})
 }
 
 // TODO: implement login, should authenticate user, and return
@@ -92,19 +93,22 @@ func Login(c *gin.Context) {
 
 		} else { // user authenticated successfully
 			// add session ID to session store for 30 minutes
-			sessionId := session.GenSessionToken()
-			uuid := driver.GetId(user)
-			fmt.Println("uuid", uuid)
-			// create session token, lasts 20 minutes
-			_, err = session.Client.SetNX(sessionId, uuid, 60*20*time.Second).Result()
-			if err != nil {
-				log.Fatal("error on redis add", err.Error())
-			}
-			val, _ := session.Client.Get(sessionId).Result()
-			res := fmt.Sprintf("welcome %s! %s %s", user, sessionId, string(val))
-			c.JSON(200, gin.H{"message": res, "status": http.StatusOK})
+			sessionId := AddSessionToken(user)
+			res := fmt.Sprintf("welcome %s!", user)
+			c.JSON(200, gin.H{"message": res, "status": http.StatusOK, "auth": sessionId})
 		}
 	}
+}
+
+func AddSessionToken(user string) string {
+	sessionId := session.GenSessionToken()
+	uuid := driver.GetId(user)
+	// create session token, lasts 20 minutes
+	_, err := session.Client.SetNX(sessionId, uuid, 60*20*time.Second).Result()
+	if err != nil {
+		log.Fatal("error on redis token add", err.Error())
+	}
+	return sessionId
 }
 
 // add all routes that are part of the /user group to the specified routing engine
