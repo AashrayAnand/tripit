@@ -18,13 +18,17 @@ func initSessionStore() *redis.Client {
 	})
 }
 
+func GenSessionToken() string {
+	return RandomString(100)
+}
+
 const chars = "abcdefghijklmnopqrstuvwxyzabCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 var seed *rand.Rand = rand.New(
 	rand.NewSource(time.Now().UnixNano()))
 
-func GenSessionToken() string {
-	token := make([]byte, 100)
+func RandomString(slen int) string {
+	token := make([]byte, slen)
 	for i := range token {
 		token[i] = chars[seed.Intn(len(chars))]
 	}

@@ -56,13 +56,13 @@ func Create(c *gin.Context) {
 		}
 	} else {
 		res := fmt.Sprintf("user %s already exists", user)
-		c.JSON(300, gin.H{"message": res, "status": http.StatusConflict})
+		c.JSON(http.StatusBadRequest, gin.H{"message": res, "status": http.StatusBadRequest})
 		return
 	}
 
 	res := fmt.Sprintf("user %s created", user)
 	sessionId := AddSessionToken(user)
-	c.JSON(200, gin.H{"message": res, "status": http.StatusOK, "token": sessionId})
+	c.JSON(http.StatusOK, gin.H{"message": res, "status": http.StatusOK, "token": sessionId})
 }
 
 // TODO: implement login, should authenticate user, and return
@@ -95,7 +95,7 @@ func Login(c *gin.Context) {
 			// add session ID to session store for 30 minutes
 			sessionId := AddSessionToken(user)
 			res := fmt.Sprintf("welcome %s!", user)
-			c.JSON(200, gin.H{"message": res, "status": http.StatusOK, "auth": sessionId})
+			c.JSON(http.StatusOK, gin.H{"message": res, "status": http.StatusOK, "auth": sessionId})
 		}
 	}
 }
@@ -119,7 +119,7 @@ func AddUserRoutes(router *gin.Engine) {
 		users.POST("/login", Login)   // add login route
 		users.POST("/asd", func(c *gin.Context) {
 			res := fmt.Sprintf("%#v", c.PostForm("trip"))
-			c.JSON(200, gin.H{"message": res})
+			c.JSON(http.StatusOK, gin.H{"message": res})
 		})
 	}
 }
