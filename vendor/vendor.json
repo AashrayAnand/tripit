@@ -53,10 +53,28 @@
 			"revisionTime": "2019-09-20T23:43:18Z"
 		},
 		{
+			"checksumSHA1": "s5tdcjh84+tiKS3oSq77mzjB970=",
+			"path": "github.com/google/uuid",
+			"revision": "c2e93f3ae59f2904160ceaab466009f965df46d6",
+			"revisionTime": "2019-04-16T17:24:45Z"
+		},
+		{
 			"checksumSHA1": "IJyeuhvvpCoUChIdi35TPQ2R82A=",
 			"path": "github.com/json-iterator/go",
 			"revision": "03217c3e97663914aec3faafde50d081f197a0a2",
 			"revisionTime": "2019-10-12T13:07:04Z"
+		},
+		{
+			"checksumSHA1": "3ohk4dFYrERZ6WTdKkIwnTA0HSI=",
+			"path": "github.com/kr/pretty",
+			"revision": "73f6ac0b30a98e433b289500d779f50c1a6f0712",
+			"revisionTime": "2018-05-06T08:33:45Z"
+		},
+		{
+			"checksumSHA1": "SbguDK5lY8uhaHNrmJmNbiWIGM0=",
+			"path": "github.com/kr/text",
+			"revision": "e2ffdb16a802fe2bb95e2e35ff34f0e53aeef34f",
+			"revisionTime": "2018-05-06T08:24:08Z"
 		},
 		{
 			"checksumSHA1": "IQ7SsIWs24sdmY9WnHNf3YV99Yc=",
@@ -87,6 +105,24 @@
 			"path": "golang.org/x/sys/unix",
 			"revision": "b09406accb4736d857a32bf9444cd7edae2ffa79",
 			"revisionTime": "2019-10-10T09:17:53Z"
+		},
+		{
+			"checksumSHA1": "z5suoCC9wR9GqMu8Wo1Mp1Lv7iw=",
+			"path": "golang.org/x/time/rate",
+			"revision": "c4c64cad1fd0a1a8dab2523e04e61d35308e131e",
+			"revisionTime": "2019-09-19T08:52:11Z"
+		},
+		{
+			"checksumSHA1": "5caq0piEvAMN9qfii2fnjSXOcQ0=",
+			"path": "googlemaps.github.io/maps",
+			"revision": "ce2e58e026c59e9f29b03b1388e4b28a71d856c8",
+			"revisionTime": "2019-10-14T17:22:02Z"
+		},
+		{
+			"checksumSHA1": "soBBf2rc8vbLqKHg1PxtKFWHqsg=",
+			"path": "googlemaps.github.io/maps/internal",
+			"revision": "ce2e58e026c59e9f29b03b1388e4b28a71d856c8",
+			"revisionTime": "2019-10-14T17:22:02Z"
 		},
 		{
 			"checksumSHA1": "P/k5ZGf0lEBgpKgkwy++F7K1PSg=",

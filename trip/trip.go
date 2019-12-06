@@ -10,6 +10,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+const MAX_TRIP = 5 // maximum number of trips in one route
+
 // trip routing group should include all necessary functionality to
 
 // 1. create new trip
@@ -31,7 +33,7 @@ func Create(c *gin.Context) {
 	}
 
 	if list.Auth == "" {
-		c.JSON(400, gin.H{"message": "no session token, please login", "status": http.StatusBadRequest})
+		c.JSON(http.StatusBadRequest, gin.H{"message": "no session token, please login", "status": http.StatusBadRequest})
 		return
 	}
 
@@ -40,12 +42,16 @@ func Create(c *gin.Context) {
 	uuid, err := session.Client.Get(list.Auth).Result()
 	if err != nil {
 		if err.Error() == "redis: nil" {
-			c.JSON(400, gin.H{"message": "session token is expired, please login", "status": http.StatusBadRequest})
+			c.JSON(http.StatusBadRequest, gin.H{"message": "session token is expired, please login", "status": http.StatusBadRequest})
 			return
 		} else {
-			c.JSON(301, gin.H{"message": "error checking session token", "status": http.StatusInternalServerError})
+			c.JSON(http.StatusInternalServerError, gin.H{"message": "error checking session token", "status": http.StatusInternalServerError})
 			return
 		}
+	}
+
+	if len(list.Locations) > MAX_TRIP {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "trip can include max" + string(MAX_TRIP) + "locations", "status": http.StatusBadRequest})
 	}
 
 	driver.AddTrip(list, uuid)

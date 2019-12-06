@@ -1,6 +1,7 @@
 package models
 
 import (
+	"sync"
 	"time"
 )
 
@@ -34,4 +35,23 @@ type AuthResp struct {
 	Auth    string `json:"auth"`
 	Message string `json:"message"`
 	Status  int    `json:"status"`
+}
+
+type LocationNode struct {
+	Name string
+	X    float32
+	Y    float32
+}
+
+// represents an edge of a specified distance, that ends
+// at the specified node
+type LocationEdge struct {
+	Distance float32
+	End      *LocationNode
+}
+
+type TripGraph struct {
+	Locations []*LocationNode
+	Edges     map[*LocationNode][]*LocationEdge
+	Lock      sync.RWMutex
 }
